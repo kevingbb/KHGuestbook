@@ -53,7 +53,7 @@ namespace sqltest
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            await context.Response.WriteAsync("<h1>ASP.NET Core Guestbook v2</h1><table>");
+                            await context.Response.WriteAsync("<h1>ASP.NET Core Guestbook v1</h1><table>");
                             await context.Response.WriteAsync("<tr><th>Date</th><th>Name</th><th>Phone</th><th>Sentiment</th><th>Message</th></tr>");
                             while (reader.Read())
                             {
