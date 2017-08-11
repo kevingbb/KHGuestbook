@@ -12,18 +12,18 @@ spec:
     spec:
       containers:
       - name: guestbook-go-web
-        image: VALUE_GOES_HERE/guestbook-web:go
+        image: khacr.azurecr.io/guestbook-web:go
         env:
         - name: SQLSERVER
-          value: "VALUE_GOES_HERE"
+          value: "40.85.157.254"
         - name: SQLPORT
-          value: "VALUE_GOES_HERE"
+          value: "10433"
         - name: SQLID
-          value: "VALUE_GOES_HERE"
+          value: "sa"
         - name: SQLPWD
-          value: "VALUE_GOES_HERE"
+          value: "Pass@word1"
         - name: SQLDB
-          value: "VALUE_GOES_HERE"
+          value: "guestbookdb"
         ports:
           - containerPort: 8080
 ---

@@ -12,16 +12,16 @@ spec:
     spec:
       containers:
       - name: guestbook-web
-        image: VALUE_GOES_HERE/guestbook-web:aspnetcore
+        image: khacr.azurecr.io/guestbook-web:aspnetcore
         env:
         - name: SQLSERVER
-          value: "VALUE_GOES_HERE"
+          value: "40.85.157.254,10433"
         - name: SQL_ID
-          value: "VALUE_GOES_HERE"
+          value: "sa"
         - name: SQL_PWD
-          value: "VALUE_GOES_HERE"
+          value: "Pass@word1"
         - name: SQL_DB
-          value: "VALUE_GOES_HERE"
+          value: "guestbookdb"
         - name: ASPNETCORE_URLS
           value: "http://+:5000"
         ports:
