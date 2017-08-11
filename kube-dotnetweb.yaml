@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: guestbook-web
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: guestbook-web
+        app: guestbook-web
+    spec:
+      containers:
+      - name: guestbook-web
+        image: VALUE_GOES_HERE/guestbook-web:aspnetcore
+        env:
+        - name: SQLSERVER
+          value: "VALUE_GOES_HERE"
+        - name: SQL_ID
+          value: "VALUE_GOES_HERE"
+        - name: SQL_PWD
+          value: "VALUE_GOES_HERE"
+        - name: SQL_DB
+          value: "VALUE_GOES_HERE"
+        - name: ASPNETCORE_URLS
+          value: "http://+:5000"
+        ports:
+          - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: guestbook-web
+  labels:
+    app: guestbook-web
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 5000
+    name: guestbook-web-port
+  selector:
+    run: guestbook-web

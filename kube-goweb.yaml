@@ -1,0 +1,42 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: guestbook-go-web
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: guestbook-go-web
+        app: guestbook-go-web
+    spec:
+      containers:
+      - name: guestbook-go-web
+        image: VALUE_GOES_HERE/guestbook-web:go
+        env:
+        - name: SQLSERVER
+          value: "VALUE_GOES_HERE"
+        - name: SQLPORT
+          value: "VALUE_GOES_HERE"
+        - name: SQLID
+          value: "VALUE_GOES_HERE"
+        - name: SQLPWD
+          value: "VALUE_GOES_HERE"
+        - name: SQLDB
+          value: "VALUE_GOES_HERE"
+        ports:
+          - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: guestbook-go-web
+  labels:
+    app: guestbook-go-web
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    run: guestbook-go-web
