@@ -1,7 +1,7 @@
 # SQL Guestbook
-This is a simple SQL Server on Linux Docker example with a .NET Core web front-end and Go web front-end.
+This is an example of a simple Guestbook registration process done via text messaging. Twilio processes the incoming text message and via a webhook, calls an Azure Function. Through a combination of Azure Functions, Queues and Cognitive Services, the incoming message is put through sentiment analysis along with content moderation before being stored in SQL Server running on Linux inside of a Docker Container running on top of Kubernetes (K8s). The Guestbook list can then be viewed via an ASP.NET Core web front-end or Go web front-end also running inside of a Container on the same K8s cluster.
 
-![Demo Overview](images/demo_graphic.jpg)
+![Demo Overview](images/guestbook_architecture.png)
 
 ## Demo Pre-requisites
 
