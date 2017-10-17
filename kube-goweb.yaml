@@ -12,16 +12,16 @@ spec:
     spec:
       containers:
       - name: guestbook-go-web
-        image: khacr.azurecr.io/guestbook-web:go
+        image: kevingbb/guestbook-web:go
         env:
         - name: SQLSERVER
-          value: "40.85.157.254"
+          value: "<PUBLIC_IP_ADDRESS_GOES_HERE>"
         - name: SQLPORT
           value: "10433"
         - name: SQLID
           value: "sa"
         - name: SQLPWD
-          value: "Pass@word1"
+          value: "<PASSWORD_GOES_HERE"
         - name: SQLDB
           value: "guestbookdb"
         ports:

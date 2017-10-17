@@ -6,7 +6,7 @@ metadata:
 provisioner: kubernetes.io/azure-disk
 parameters:
   skuName: Standard_LRS
-  location: westus
+  location: <LOCATION_GOES_HERE>
 ---
 apiVersion: "v1"
 kind: "PersistentVolumeClaim"
@@ -34,12 +34,14 @@ spec:
     spec:
       containers:
       - name: guestbook-db
-        image: microsoft/mssql-server-linux
+        image: microsoft/mssql-server-linux:2017-latest
         env:
         - name: ACCEPT_EULA
           value: "Y"
-        - name: SA_PASSWORD
-          value: Pass@word1
+        - name: MSSQL_SA_PASSWORD
+          value: <PASSWORD_GOES_HERE>
+        - name: MSSQL_PID
+          value: Developer
         volumeMounts:
         - mountPath: /var/opt/mssql
           name: sqldb-home
